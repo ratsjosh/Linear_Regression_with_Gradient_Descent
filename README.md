@@ -31,4 +31,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Resources
 
-[rwieruch's](https://www.robinwieruch.de) implementation of [linear regression gradient descent](https://github.com/javascript-machine-learning/linear-regression-gradient-descent) with Javascript
+- [rwieruch's](https://www.robinwieruch.de) implementation of [linear regression gradient descent](https://github.com/javascript-machine-learning/linear-regression-gradient-descent) with Javascript
+- [goweiwen](https://github.com/goweiwen/goweiwen.github.io)
