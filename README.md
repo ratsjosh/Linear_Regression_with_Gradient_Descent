@@ -1,6 +1,6 @@
 # linear-regression
 
-> linear regression with gradient descent
+> linear regression with gradient descent (single variable)
 
 ## Build Setup
 
@@ -28,3 +28,7 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Resources
+
+[rwieruch's](https://www.robinwieruch.de) implementation of [linear regression gradient descent](https://github.com/javascript-machine-learning/linear-regression-gradient-descent) with Javascript
