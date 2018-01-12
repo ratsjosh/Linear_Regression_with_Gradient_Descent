@@ -1,25 +1,56 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>{{ msg }}</h1>
-    <!-- <button v-on:click="learn">Iterate 1</button> -->
     <hr >
     <h1>thetaZero: {{ thetaZero }}</h1>
     <h1>thetaOne: {{ thetaOne }}</h1>
     <h1>cost: {{ error }}</h1>
+    <hr >
+      <div>
+        <scatter-chart
+          :chartData="{ datasets: [
+          {
+            label: 'Hyopthesis',
+            data: [{
+              x: 0,
+              y: this.hypothesis(0)
+            }, {
+              x: 100,
+              y: this.hypothesis(100)
+            }],
+            backgroundColor: '#3e95cd',
+            borderColor: '#3e95cd',
+            // Changes this dataset to become a line
+            type: 'line',
+            showLine: true,
+            fill: false,
+          },
+          {
+            label: 'Scatter Dataset',
+            data: this.collection,
+          }]
+          }"
+        />
+      </div>
   </div>
 </template>
 
 <script>
+import ScatterChart from './ScatterChart';
+
 export default {
   name: 'Home',
+  components: {
+    ScatterChart,
+  },
   data() {
     return {
       msg: 'Linear regression with gradient descent',
       collection: [],
       x: [],
       y: [],
-      m: 10,
-      learningRate: 0.0003,
+      m: 100,
+      learningRate: 0.0002,
       thetaZero: 0,
       thetaOne: 0,
       error: 0,
@@ -27,12 +58,12 @@ export default {
   },
   methods: {
     getRandomIntFromInterval: (min, max) => Math.floor((Math.random() * (max - (min + 1))) + min),
-    createRandomPortlandHouse() {
+    createRandomPoints() {
       const squareMeter = this.getRandomIntFromInterval(0, 100);
-      const price = this.getRandomIntFromInterval(0, 100);
+      const price = this.getRandomIntFromInterval(50, 100) * squareMeter;
       return {
-        squareMeter,
-        price,
+        x: squareMeter,
+        y: price,
       };
     },
     hypothesis(x) {
@@ -60,17 +91,19 @@ export default {
 
   created() {
     for (let i = 0; i < this.m; i++) {
-      this.collection.push(this.createRandomPortlandHouse());
+      this.collection.push(this.createRandomPoints());
     }
-    this.x = this.collection.map(date => date.squareMeter);
-    this.y = this.collection.map(date => date.price);
+    this.x = this.collection.map(date => date.x);
+    this.y = this.collection.map(date => date.y);
+    console.log(this.x);
+    console.log(this.y);
   },
 
   mounted() {
     const self = this;
     setInterval(() => {
       self.learn();
-    }, 500);
+    }, 1000);
   },
 };
 </script>
