@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
-    <hr >
-    <h1>thetaZero: {{ thetaZero }}</h1>
-    <h1>thetaOne: {{ thetaOne }}</h1>
-    <h1>cost: {{ error }}</h1>
-    <hr >
-      <div>
+    <div class="wrapper">
+      <div class="one">
+        <h1>{{ msg }}</h1>
+        <hr >
+        <h1>thetaZero: {{ thetaZero }}</h1>
+        <h1>thetaOne: {{ thetaOne }}</h1>
+        <h1>cost: {{ error }}</h1>
+      </div>
+      <div class="two">
         <scatter-chart
           :chartData="{ datasets: [
           {
@@ -32,6 +34,7 @@
           }"
         />
       </div>
+    </div>
   </div>
 </template>
 
@@ -95,8 +98,6 @@ export default {
     }
     this.x = this.collection.map(date => date.x);
     this.y = this.collection.map(date => date.y);
-    console.log(this.x);
-    console.log(this.y);
   },
 
   mounted() {
@@ -123,5 +124,19 @@ li {
 }
 a {
   color: #42b983;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.one {
+  grid-column: 1;
+  grid-row: 1;
+}
+.two { 
+  grid-column: 2;
+  grid-row: 1;
 }
 </style>
