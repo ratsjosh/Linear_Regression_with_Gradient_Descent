@@ -53,7 +53,7 @@ export default {
       x: [],
       y: [],
       m: 100,
-      learningRate: 0.0002,
+      learningRate: 0.0003,
       thetaZero: 0,
       thetaOne: 0,
       error: 0,
@@ -63,7 +63,7 @@ export default {
     getRandomIntFromInterval: (min, max) => Math.floor((Math.random() * (max - (min + 1))) + min),
     createRandomPoints() {
       const squareMeter = this.getRandomIntFromInterval(0, 100);
-      const price = this.getRandomIntFromInterval(50, 100) * squareMeter;
+      const price = this.getRandomIntFromInterval(0, 100);
       return {
         x: squareMeter,
         y: price,
@@ -104,7 +104,7 @@ export default {
     const self = this;
     setInterval(() => {
       self.learn();
-    }, 1000);
+    }, 1);
   },
 };
 </script>
