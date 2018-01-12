@@ -4,9 +4,13 @@
       <div class="one">
         <h1>{{ msg }}</h1>
         <hr >
-        <h1>thetaZero: {{ thetaZero }}</h1>
-        <h1>thetaOne: {{ thetaOne }}</h1>
-        <h1>cost: {{ error }}</h1>
+        <h1>Iteration: {{ iteration }}</h1>
+        <h1>Hypothesis: f(x) = {{ this.thetaOne.toFixed(2) }}x + {{ this.thetaZero.toFixed(2) }}</h1>
+        <h2>thetaZero: {{ thetaZero }}</h2>
+        <h2>thetaOne: {{ thetaOne }}</h2>
+        <h2>cost: {{ error }}</h2>
+        <br>
+        <a target="_blank" href="https://github.com/ratsjosh/Linear_Regression_with_Gradient_Descent">Github Repo</a>
       </div>
       <div class="two">
         <scatter-chart
@@ -57,6 +61,7 @@ export default {
       thetaZero: 0,
       thetaOne: 0,
       error: 0,
+      iteration: 0,
     };
   },
   methods: {
@@ -104,6 +109,7 @@ export default {
     const self = this;
     setInterval(() => {
       self.learn();
+      ++this.iteration;
     }, 1);
   },
 };
